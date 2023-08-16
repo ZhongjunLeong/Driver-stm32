@@ -1,0 +1,1 @@
+cmd_/home/lzj/git/Drive/dtsplatform/dtsplatform.ko := arm-none-linux-gnueabihf-ld -r -EL --build-id  -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds -o /home/lzj/git/Drive/dtsplatform/dtsplatform.ko /home/lzj/git/Drive/dtsplatform/dtsplatform.o /home/lzj/git/Drive/dtsplatform/dtsplatform.mod.o;  true

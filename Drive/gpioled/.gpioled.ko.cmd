@@ -1,0 +1,1 @@
+cmd_/home/lzj/git/Drive/gpioled/gpioled.ko := arm-none-linux-gnueabihf-ld -r -EL --build-id  -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds -o /home/lzj/git/Drive/gpioled/gpioled.ko /home/lzj/git/Drive/gpioled/gpioled.o /home/lzj/git/Drive/gpioled/gpioled.mod.o;  true

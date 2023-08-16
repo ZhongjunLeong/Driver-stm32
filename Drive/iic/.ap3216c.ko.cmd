@@ -1,0 +1,1 @@
+cmd_/home/lzj/git/Drive/iic/ap3216c.ko := arm-none-linux-gnueabihf-ld -r -EL --build-id  -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds -o /home/lzj/git/Drive/iic/ap3216c.ko /home/lzj/git/Drive/iic/ap3216c.o /home/lzj/git/Drive/iic/ap3216c.mod.o;  true

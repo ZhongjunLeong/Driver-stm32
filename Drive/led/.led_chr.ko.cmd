@@ -1,0 +1,1 @@
+cmd_/home/lzj/git/Drive/led/led_chr.ko := arm-none-linux-gnueabihf-ld -r -EL --build-id  -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds -o /home/lzj/git/Drive/led/led_chr.ko /home/lzj/git/Drive/led/led_chr.o /home/lzj/git/Drive/led/led_chr.mod.o;  true
