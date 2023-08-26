@@ -1,0 +1,1 @@
+cmd_/home/lzj/git/Driver-stm32/Anti-collision/src/gpio.ko := arm-none-linux-gnueabihf-ld -r -EL --build-id  -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds -o /home/lzj/git/Driver-stm32/Anti-collision/src/gpio.ko /home/lzj/git/Driver-stm32/Anti-collision/src/gpio.o /home/lzj/git/Driver-stm32/Anti-collision/src/gpio.mod.o;  true

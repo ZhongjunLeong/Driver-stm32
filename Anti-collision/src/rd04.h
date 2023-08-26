@@ -38,8 +38,8 @@ typedef enum {
     RD04_TPOWER_7       //发射功率(7) -- 108.5uA@6V 靠近感应无反应(Transmission power (7)-- 108.5uA@6V Proximity induction without response)
 }rd04_tpower_t;
 
-extern const struct file_operations rd04_ops;
 
+extern const struct file_operations rd04_ops;
 /*i2c从设备结构体*/
 struct rd04_dev
 {
@@ -52,13 +52,13 @@ struct rd04_dev
 };
 
 //uint8_t axk_rd04_i2c_init(void);    //i2c初始化
-void axk_rd04_default_config(void); //默认配置
+void axk_rd04_default_config(struct rd04_dev* ); //默认配置
 //void axk_rd04_display_config(void);     //显示配置
-void AxkRd04SetIoValOutput(uint8_t OutputStatus);   //设置结果输出参数
-void AxkRd04SetADCSamplingFrequency(rd04_adc_sf_t ADC_SF);  //设置频率
-void AxkRD04SetTransmittingPower(rd04_tpower_t Tpower); //设置传送电源
-void AxkRD04SetInductionThreshold(uint16_t IndTs);  //设置感应阈值
-void AxkRD04SetNoiseUpdate(uint16_t noiseupdate);   //设置噪声上传
-void AxkRD04SetInductionDelayTime(uint32_t _delay_ms);  //设置感应延迟时间
-void AxkRD04SetBlockadeTime(uint32_t _delay_ms);    //设置阻塞时间
+void AxkRd04SetIoValOutput(struct rd04_dev* , uint8_t OutputStatus);   //设置结果输出参数
+void AxkRd04SetADCSamplingFrequency(struct rd04_dev*, rd04_adc_sf_t ADC_SF);  //设置频率
+void AxkRD04SetTransmittingPower(struct rd04_dev*, rd04_tpower_t Tpower); //设置传送电源
+void AxkRD04SetInductionThreshold(struct rd04_dev *, uint16_t IndTs);  //设置感应阈值
+void AxkRD04SetNoiseUpdate(struct rd04_dev *, uint16_t noiseupdate);   //设置噪声上传
+void AxkRD04SetInductionDelayTime(struct rd04_dev *, uint32_t _delay_ms);  //设置感应延迟时间
+void AxkRD04SetBlockadeTime(struct rd04_dev *, uint32_t _delay_ms);    //设置阻塞时间
 #endif

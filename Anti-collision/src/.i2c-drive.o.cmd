@@ -1,0 +1,1 @@
+cmd_/home/lzj/git/Driver-stm32/Anti-collision/src/i2c-drive.o := arm-none-linux-gnueabihf-ld -EL   -r -o /home/lzj/git/Driver-stm32/Anti-collision/src/i2c-drive.o /home/lzj/git/Driver-stm32/Anti-collision/src/rd04.o

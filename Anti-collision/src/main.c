@@ -5,7 +5,8 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <pthread.h>
+#include <errno.h>
 /*命令行输入：./main /dev/out_gpio /dev/RD04*/
 
 /*读取雷达数据*/
@@ -17,7 +18,7 @@ static void *go_rd04(void *s)
     char out[10];
     int ret = 0;
 
-    filename = argv[2];
+    filename = s;
     fd = open(filename, O_RDWR);
     if(fd < 0) {
         printf("can't open file %s\r\n", filename);
@@ -44,7 +45,7 @@ int main(int argc, char *argv[])
     char *filename;
     int databuf;
     pthread_t pid;
-
+    int err;
     if(argc != 3)
     {
         printf("Error Usage:%s /dev/out_gpio!\r\n", argv[0]);
@@ -79,10 +80,10 @@ int main(int argc, char *argv[])
       printf("没人\n");
     }
 
-    err = pthread_create(&pid, NULL, go_rd04, NULL);
+    err = pthread_create(&pid, NULL, go_rd04, argv[2]);
     if(err < 0)
     {
-      fprintf(stderr, "pthread_create fail :%s", sterror(errno));
+      fprintf(stderr, "pthread_create fail :%s", strerror(errno));
       return -1;
     }
 

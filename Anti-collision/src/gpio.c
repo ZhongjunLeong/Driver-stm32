@@ -84,7 +84,7 @@ static int led_gpio_init(struct device_node *nd)
     }
 
     /* 3、设置 PI0 为输入，检测物体的值输入到GPIO */
-    ret = gpio_direction_intput(outdev.gpio_out);
+    ret = gpio_direction_input(outdev.gpio_out);
     if(ret < 0)
     {
         printk("can't set gpio!\r\n");

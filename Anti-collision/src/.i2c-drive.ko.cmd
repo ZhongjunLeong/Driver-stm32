@@ -1,0 +1,1 @@
+cmd_/home/lzj/git/Driver-stm32/Anti-collision/src/i2c-drive.ko := arm-none-linux-gnueabihf-ld -r -EL --build-id  -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds -o /home/lzj/git/Driver-stm32/Anti-collision/src/i2c-drive.ko /home/lzj/git/Driver-stm32/Anti-collision/src/i2c-drive.o /home/lzj/git/Driver-stm32/Anti-collision/src/i2c-drive.mod.o;  true
