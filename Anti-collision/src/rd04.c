@@ -133,7 +133,7 @@ static int rd04_write_reg(struct rd04_dev *dev, int reg, int data)
 void AxkRd04SetIoValOutput(struct rd04_dev *dev, uint8_t OutputStatus)
 {
   
-    mdelay(10);
+    usleep_range(10, 11);
     OutputStatus?rd04_write_reg(dev, 0X24, 0X07):rd04_write_reg(dev, 0X24, 0X03);//0x07高 0x03低
   
 }
@@ -145,7 +145,7 @@ void AxkRd04SetIoValOutput(struct rd04_dev *dev, uint8_t OutputStatus)
 void AxkRd04SetWayOfWorking(struct rd04_dev *dev, rd04_psm_t PSM)
 {
    
-mdelay(10);
+usleep_range(10, 11);
     rd04_write_reg(dev, 0X04, PSM);
    
 }
@@ -157,7 +157,7 @@ mdelay(10);
 void AxkRd04SetADCSamplingFrequency(struct rd04_dev *dev, rd04_adc_sf_t ADC_SF)
 {
     
-mdelay(10);
+usleep_range(10, 11);
     switch (ADC_SF)
     {
         case RD04_ADC_SF_1KHz:
@@ -184,7 +184,7 @@ mdelay(10);
 void AxkRD04SetTransmittingPower(struct rd04_dev *dev, rd04_tpower_t Tpower)
 {
     
-mdelay(10);
+usleep_range(10, 11);
     rd04_write_reg(dev, 0X03, 0X40+Tpower);
     
 }
@@ -196,7 +196,7 @@ mdelay(10);
 void AxkRD04SetInductionThreshold(struct rd04_dev *dev, uint16_t IndTs)
 {
    
-mdelay(10);
+usleep_range(10, 11);
     rd04_write_reg(dev, 0X18, (IndTs&0XFF));
     rd04_write_reg(dev, 0X19, (IndTs>>8)&0XFF);
    
@@ -209,7 +209,7 @@ mdelay(10);
 void AxkRD04SetNoiseUpdate(struct rd04_dev *dev, uint16_t noiseupdate)
 {
     
-mdelay(10);
+usleep_range(10, 11);
     rd04_write_reg(dev, 0X1A, (noiseupdate&0XFF));
     rd04_write_reg(dev, 0X1B, (noiseupdate>>8)&0XFF);
     
@@ -224,7 +224,7 @@ void AxkRD04SetInductionDelayTime(struct rd04_dev *dev, uint32_t _delay_ms)
     uint32_t timer_hex = 0;
     timer_hex = _delay_ms*32;
  
-mdelay(10);
+usleep_range(10, 11);
     rd04_write_reg(dev, 0X1D, (timer_hex&0XFF));
     rd04_write_reg(dev, 0X1E, (timer_hex>>8)&0XFF);
     rd04_write_reg(dev, 0X1F, (timer_hex>>16)&0XFF);
@@ -240,7 +240,7 @@ void AxkRD04SetBlockadeTime(struct rd04_dev *dev, uint32_t _delay_ms)
     uint32_t timer_hex = 0;
     timer_hex = _delay_ms*32;
     
-mdelay(10);
+usleep_range(10, 11);
     rd04_write_reg(dev, 0X20, (timer_hex&0XFF));
     rd04_write_reg(dev, 0X21, (timer_hex>>8)&0XFF);
     rd04_write_reg(dev, 0X22, (timer_hex>>16)&0XFF);
@@ -254,16 +254,16 @@ void axk_rd04_default_config(struct rd04_dev *dev)
     char buff = 0;
     int i;
 
-mdelay(10);
+usleep_range(10, 11);
     for (i = 0; i < 5; i++)
     {
         if (rd04_write_reg(dev, 0x13, 0x9b) >= 0)
-        mdelay(10);
+        usleep_range(10, 11);
         else break;
         
 
         buff = rd04_read_reg(dev, 0x13);
-    mdelay(10);
+    usleep_range(10, 11);
     }
     rd04_write_reg(dev, 0x24, 0x03);
     rd04_write_reg(dev, 0x04, 0x20);
@@ -287,9 +287,9 @@ mdelay(10);
 
     rd04_write_reg(dev, 0x23, 0x0C);
 
-mdelay(1000000);
-mdelay(1000000);
-mdelay(1000000);
+usleep_range(1000000, 2000000);
+usleep_range(1000000, 2000000);
+usleep_range(1000000, 2000000);
 
 }
 /*****************************************************************************************/
@@ -309,7 +309,7 @@ static int rd04_open(struct inode *inode, struct file *filp)
 
     /* 打开i2c设备的从设备 rd04 */
     rd04_write_reg(rd04dev, RD_04_I2C_ADDR, AXK_RD04_WR); //系统配置复位
-    mdelay(50); 
+   
 
     axk_rd04_default_config(rd04dev);
     AxkRD04SetTransmittingPower(rd04dev, RD04_TPOWER_5);
@@ -363,3 +363,5 @@ const struct file_operations rd04_ops = {
     .read = rd04_read,
     .release = rd04_release,
 };
+
+MODULE_LICENSE("GPL");

@@ -153,5 +153,5 @@ static void __exit rd04_exit(void)
 module_init(rd04_init);
 module_exit(rd04_exit);
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("ALIENTEK");
+MODULE_AUTHOR("lzj");
 MODULE_INFO(intree, "Y");
